@@ -7,9 +7,16 @@ body {
   background: $bgColor;
 }
 
+:root {
+  --x-pos: 0;
+  --y-pos: 0;
+}
+
 .container {
   min-height: 100vh;
   @include display_flex();
+  gap: 1.5rem;
+  flex-wrap: wrap;
   &__card {
     max-width: 300px;
     width: 100%;
@@ -18,5 +25,27 @@ body {
     background-color: background_opacity(0.06);
     border: 1px solid background_opacity(0.1);
     backdrop-filter: blur(30px);
+    position: relative;
+    cursor: pointer;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: radial-gradient(
+        600px circle at var(--x-pos) var(--y-pos),
+        background_opacity(0.06),
+        transparent 40%
+      );
+      border-radius: inherit;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s ease;
+      opacity: 0;
+      z-index: 9;
+    }
+    &:hover::before {
+      opacity: 1;
+    }
   }
 }
