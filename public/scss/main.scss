@@ -1,6 +1,7 @@
 @import "./partials/reset";
 @import "./partials/vars";
 @import "./partials/funct";
+@import "./partials/mixins";
 
 body {
   background: $bgColor;
@@ -8,6 +9,7 @@ body {
 
 .container {
   min-height: 100vh;
+  @include display_flex();
   &__card {
     max-width: 300px;
     width: 100%;
