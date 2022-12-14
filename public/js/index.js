@@ -1,6 +1,6 @@
 const cards = document.querySelectorAll(".container__card");
 
-const initialCardAnimate = (card, index) => {
+const initialCardAnimate = (card) => {
   card.animate(
     [
       {
@@ -14,7 +14,6 @@ const initialCardAnimate = (card, index) => {
     ],
     {
       duration: 500,
-      delay: index,
     }
   );
 };
@@ -37,8 +36,8 @@ const handleMouseMove = (e) => {
   handleAnimate(e, x, y);
 };
 
-cards.forEach((card, index) => {
-  initialCardAnimate(card, index);
+cards.forEach((card) => {
+  initialCardAnimate(card);
 
   card.addEventListener("mousemove", handleMouseMove);
 });
