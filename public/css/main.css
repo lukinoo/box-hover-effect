@@ -10,11 +10,18 @@ body {
   background: rgb(10, 10, 10);
 }
 
+:root {
+  --x-pos: 0;
+  --y-pos: 0;
+}
+
 .container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 .container__card {
   max-width: 300px;
@@ -24,4 +31,22 @@ body {
   background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(30px);
+  position: relative;
+  cursor: pointer;
+}
+.container__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: radial-gradient(600px circle at var(--x-pos) var(--y-pos), rgba(255, 255, 255, 0.06), transparent 40%);
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  z-index: 9;
+}
+.container__card:hover::before {
+  opacity: 1;
 }/*# sourceMappingURL=main.css.map */
